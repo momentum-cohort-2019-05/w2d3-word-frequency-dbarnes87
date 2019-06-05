@@ -1,4 +1,5 @@
 import re
+import operator
 
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
@@ -35,8 +36,10 @@ def count_freq(list_of_words):
             master_list[word] = 1
         else:
             master_list[word] += 1
-
-    print(master_list)
+    # master_list = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+    sorted_list = sorted(master_list.items(), key=operator.itemgetter(1), reverse=True)
+    # sorted_list = sorted(master_list.items())
+    print(sorted_list)
 
 count_freq(list_of_words)
 
@@ -67,6 +70,8 @@ if __name__ == "__main__":
     else:
         print(f"{file} does not exist!")
         exit(1)
+
+
 
 
 
